@@ -1,140 +1,99 @@
-# WanderlustAgent — Desafio do Mês 2 (Compass UOL)
+````markdown
+# WanderlustAgent — Desafio do Mês 2
 
-Material do desafio de **governança, avaliação em nuvem (Amazon Bedrock AgentCore), testes automatizados com [DeepEval](https://github.com/confident-ai/deepeval) e Red Teaming**.
+Projeto desenvolvido durante o **Desafio do Mês 2 — Compass UOL**, com foco em avaliação, testes e segurança de agentes de Inteligência Artificial.
 
-O projeto traz um assistente virtual inteligente (`WanderlustAgent`) desenvolvido para a agência fictícia **Rota Viva**, especializado em recomendações de roteiros turísticos, regras de bilheteria, franquias de bagagem e políticas de cancelamento.
+O **WanderlustAgent** é um assistente virtual desenvolvido para a agência fictícia **Rota Viva**, especializado em recomendações de roteiros turísticos, regras de bilheteria, franquias de bagagem e políticas de cancelamento.
 
-O objetivo do desafio é auditar, testar, aplicar campanhas de segurança e mitigar vulnerabilidades estruturais entre a versão de linha de base (*baseline*) e a versão final.
+O projeto contempla avaliação do agente em ambiente AWS, testes automatizados, uso de RAG e técnicas de *Red Teaming*.
 
-## Estrutura do Repositório
+## Tecnologias
+
+- **Python**
+- **Amazon Bedrock AgentCore**
+- **Amazon Bedrock Knowledge Base**
+- **Amazon S3**
+- **DeepEval**
+- **Pytest**
+- **Google Gemma 3 12B IT**
+- **Llama 3.2 3B**
+- **RAG (Retrieval-Augmented Generation)**
+
+## Estrutura do Projeto
 
 ```text
 wanderlust-agent/
 │
-├── dataset.py            # Golden Dataset estruturado com 15 casos divididos em 5 categorias
-├── dataset.txt           # Base operacional e textual de referência
-├── prompt_viagem.md      # Manual corporativo, políticas e regras de segurança (hospedado no S3)
-├── test_agent.py         # Módulo de testes e interações do agente
-├── teste_suite.py        # Suíte automatizada de testes locais com DeepEval (pytest)
-└── relatorio.md          # Documentação técnica detalhada do projeto
+├── dataset.py            # Golden Dataset com 15 casos de teste
+├── dataset.txt           # Base de referência utilizada nos testes
+├── prompt_viagem.md      # Políticas, regras e instruções do agente
+├── test_agent.py         # Testes e interações com o agente
+├── teste_suite.py        # Suíte automatizada com DeepEval e Pytest
+└── relatorio.md          # Relatório técnico completo do projeto
 ````
 
-## Arquitetura e Tecnologias
+## Avaliação
 
-* **Modelo Base (Runtime):** Google Gemma 3 12B IT, configurado no Amazon Bedrock AgentCore.
-* **Modelo Avaliador (DeepEval Judge):** Llama 3.2 3B, executado localmente para métricas de *Answer Relevancy*, *Faithfulness* e *G-Eval*.
-* **Ferramenta de Recuperação (RAG):** Base de Conhecimento via Amazon Bedrock Knowledge Base (`kb-wanderlust`) conectada ao Amazon S3.
-* **Mecanismo de Memória:** *Session State* nativo do AgentCore para controle de histórico multi-turno.
+O projeto utiliza duas frentes principais de avaliação:
 
-## Requisitos e Instalação
+### AgentCore
 
-* Python 3.10 ou superior
-* Ambiente Anaconda ou Virtualenv configurado
+Avaliação do agente integrado ao ambiente AWS, considerando métricas de qualidade e fidelidade das respostas.
 
-### Criação do ambiente virtual
+### DeepEval
+
+Execução de testes automatizados utilizando um Golden Dataset com **15 casos de teste**, avaliando aspectos como:
+
+* Relevância das respostas;
+* Fidelidade ao contexto;
+* Conformidade com as regras de negócio.
+
+Também foi realizada uma campanha de **Red Teaming** para identificar vulnerabilidades e avaliar a segurança do agente.
+
+## Execução
+
+### 1. Criar o ambiente virtual
 
 ```bash
 python -m venv .venv
 ```
 
-### Ativação no Linux/macOS
+### 2. Ativar o ambiente
 
-```bash
-source .venv/bin/activate
-```
-
-### Ativação no Windows (PowerShell)
+**Windows (PowerShell):**
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-### Instalação das dependências
+**Linux/macOS:**
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Instalar as dependências
 
 ```bash
 pip install requests deepeval pytest
 ```
 
-## Instruções de Execução
-
-### Suíte DeepEval Local
-
-Para executar a suíte de testes automatizados e validar as métricas de qualidade e segurança do agente:
+### 4. Executar a suíte de testes
 
 ```bash
 pytest teste_suite.py
 ```
 
-Em um ambiente Anaconda, também é possível executar:
+## Documentação
 
-```bash
-/opt/anaconda3/bin/pytest teste_suite.py
-```
+Para informações detalhadas sobre planejamento, dataset, avaliação, *Red Teaming*, vulnerabilidades identificadas, correções e resultados, consulte o:
 
-## Resumo das Frentes de Avaliação e Red Teaming
+📄 [`relatorio.md`](relatorio.md)
 
-### 1. Frente A — AgentCore Evaluations
+## Autora
 
-Auditoria do comportamento integrado na nuvem da AWS utilizando avaliadores integrados, como:
+**Ananda Cristine Rodrigues Mazine dos Santos**
 
-* *Answer Relevance*
-* *Faithfulness*
-* Avaliadores customizados de regras de negócio
+Projeto desenvolvido como parte do **Desafio do Mês 2 — Compass UOL**.
 
-### 2. Frente B — DeepEval
-
-Validação quantitativa local automatizada por meio de testes, cobrindo:
-
-* Relevância das respostas
-* Fidelidade ao contexto fornecido
-* Conformidade com as regras de negócio
-* Qualidade das respostas do agente
-
-### 3. Red Teaming e Análise Baseline vs. Versão Final
-
-A campanha de *Red Teaming* teve como objetivo identificar vulnerabilidades de segurança e avaliar a resistência do agente a diferentes tipos de ataques.
-
-Durante a análise, foi identificada uma falha relacionada à **injeção indireta de contexto via RAG (Caso ID 2)**.
-
-A vulnerabilidade foi posteriormente corrigida diretamente no arquivo `prompt_viagem.md`, hospedado no Amazon S3, resultando em uma versão final com comportamento mais resistente ao ataque identificado.
-
-## Custos e Limites
-
-O desafio foi desenvolvido seguindo diretrizes de **otimização de custos**, utilizando serviços gerenciados de laboratório e modelos locais ou disponíveis em camadas gratuitas quando aplicável.
-
-A versão validada utiliza:
-
-* **DeepEval 4.x**
-* **Amazon Bedrock AgentCore**
-* **Amazon Bedrock Knowledge Base**
-* **Amazon S3**
-* Modelos locais para avaliação automatizada
-
-## Objetivo do Projeto
-
-O projeto busca demonstrar, na prática, um ciclo completo de **desenvolvimento, avaliação, testes automatizados, segurança e melhoria contínua de um agente de IA**, considerando tanto a qualidade das respostas quanto sua resistência a ataques e manipulações.
-
-O fluxo de validação contempla:
-
-```text
-Desenvolvimento
-      ↓
-Golden Dataset
-      ↓
-Avaliação no AgentCore
-      ↓
-Testes automatizados com DeepEval
-      ↓
-Red Teaming
-      ↓
-Identificação de vulnerabilidades
-      ↓
-Correções
-      ↓
-Nova validação
-      ↓
-Versão Final
-```
-
-```
 ```
