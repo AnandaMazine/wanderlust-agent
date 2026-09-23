@@ -1,15 +1,12 @@
 import boto3
 from dataset import GOLDEN_DATASET
 
-# Inicializa o cliente do Bedrock Agent Core na região correta
 client = boto3.client('bedrock-agentcore', region_name='us-east-1')
 
-# ARN do seu harness obtido na consola da AWS
 HARNESS_ARN = 'arn:aws:bedrock-agentcore:us-east-1:479606007964:harness/WanderlustAgent-G7dqqQc5OV'
 SESSION_ID = 'sessao_de_teste_automatizada_do_golden_dataset_2026'
 
 def chamar_agente(pergunta):
-    """Envia uma mensagem para o agente via invoke_harness e captura a resposta em streaming."""
     try:
         response = client.invoke_harness(
             harnessArn=HARNESS_ARN,
@@ -22,7 +19,6 @@ def chamar_agente(pergunta):
             ]
         )
         
-        # Processa a resposta em streaming conforme o modelo da AWS
         resposta_completa = ""
         for event in response.get('stream', []):
             if 'contentBlockDelta' in event:
