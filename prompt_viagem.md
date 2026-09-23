@@ -7,7 +7,7 @@
 - Cancelamentos com a classe promocional não têm direito a reembolso em nenhuma hipótese.
 
 ## 2. Franquia de Bagagem
-- **Voos Nacionais:** Direito a 1 mala de mão de até 10 kg inclusa. Mala despachada de até 23 kg tiene a taxa de R$ 400 por trecho.
+- **Voos Nacionais:** Direito a 1 mala de mão de até 10 kg inclusa. Mala despachada de até 23 kg tem a taxa de R$ 400 por trecho.
 - **Voos Internacionais:** Direito a 1 mala de mão de 10 kg e 1 mala despachada de 23 kg inclusas. A bagagem despachada extra custa R$ 350.
 
 ## 3. Roteiros Disponíveis

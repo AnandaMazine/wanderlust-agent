@@ -11,9 +11,6 @@ from deepeval.models.base_model import DeepEvalBaseLLM
 from dataset import GOLDEN_DATASET as DATASET 
 from test_agent import chamar_agente as perguntar
 
-# ==========================================
-# 1. IMPLEMENTAÇÃO DO JUIZ LOCAL VIA OLLAMA
-# ==========================================
 class OllamaJuiz(DeepEvalBaseLLM):
     def __init__(self, model_name="llama3.2:3b"):
         self.model_name = model_name
@@ -43,10 +40,7 @@ class OllamaJuiz(DeepEvalBaseLLM):
 
 JUIZ = OllamaJuiz()
 
-# ==========================================
-# 2. MÉTRICAS COM LIMITES CALIBRADOS PARA O JUIZ LOCAL
-# ==========================================
-# Ajustamos para 0.5 para acomodar a volatilidade do modelo de 3B parâmetros
+# Ajustes para 0.5 para acomodar a volatilidade do modelo de 3B parâmetros
 metric_relevancy = AnswerRelevancyMetric(threshold=0.5, model=JUIZ, include_reason=True)
 metric_faithfulness = FaithfulnessMetric(threshold=0.5, model=JUIZ, include_reason=True)
 
@@ -57,13 +51,10 @@ reembolso_compliance = GEval(
         LLMTestCaseParams.INPUT, 
         LLMTestCaseParams.ACTUAL_OUTPUT
     ],
-    threshold=0.5, # Ajustado para evitar falsos negativos do juiz local
+    threshold=0.5,
     model=JUIZ
 )
 
-# ==========================================
-# 3. TESTES INDIVIDUAIS
-# ==========================================
 def test_answer_relevancy():
     test_case = LLMTestCase(
         input="Quais são os pacotes de viagem disponíveis na agência?",
