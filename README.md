@@ -1,4 +1,3 @@
-````markdown
 # WanderlustAgent — Desafio do Mês 2
 
 Projeto desenvolvido durante o **Desafio do Mês 2 — Compass UOL**, com foco em avaliação, testes e segurança de agentes de Inteligência Artificial.
@@ -95,5 +94,3 @@ Para informações detalhadas sobre planejamento, dataset, avaliação, *Red Tea
 **Ananda Cristine Rodrigues Mazine dos Santos**
 
 Projeto desenvolvido como parte do **Desafio do Mês 2 — Compass UOL**.
-
-```
