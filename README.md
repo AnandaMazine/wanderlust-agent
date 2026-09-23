@@ -1,4 +1,3 @@
-````markdown
 # WanderlustAgent — Desafio do Mês 2 (Compass UOL)
 
 Material do desafio de **governança, avaliação em nuvem (Amazon Bedrock AgentCore), testes automatizados com [DeepEval](https://github.com/confident-ai/deepeval) e Red Teaming**.
