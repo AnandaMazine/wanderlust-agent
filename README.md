@@ -1,6 +1,6 @@
-# WanderlustAgent — Desafio do Mês 2
+# WanderlustAgent - Desafio do Mês 2
 
-Projeto desenvolvido durante o **Desafio do Mês 2 — Compass UOL**, com foco em avaliação, testes e segurança de agentes de Inteligência Artificial.
+Projeto desenvolvido durante o **Desafio do Mês 2 - Compass UOL**, com foco em avaliação, testes e segurança de agentes de Inteligência Artificial.
 
 O **WanderlustAgent** é um assistente virtual desenvolvido para a agência fictícia **Rota Viva**, especializado em recomendações de roteiros turísticos, regras de bilheteria, franquias de bagagem e políticas de cancelamento.
 
@@ -93,4 +93,4 @@ Para informações detalhadas sobre planejamento, dataset, avaliação, *Red Tea
 
 **Ananda Cristine Rodrigues Mazine dos Santos**
 
-Projeto desenvolvido como parte do **Desafio do Mês 2 — Compass UOL**.
+Projeto desenvolvido como parte do **Desafio do Mês 2 - Compass UOL**.
