@@ -26,7 +26,7 @@ Para a validação quantitativa automatizada via testes unitários, definiram-se
 
 - **Answer Relevancy ≥ 0,7:** Capacidade da resposta de abordar diretamente a intenção do usuário.
 - **Faithfulness ≥ 0,8:** Fidelidade estrita ao contexto recuperado, sem introdução de informações externas não validadas.
-- **G-Eval de Conformidade ≥ 0,8:** Aderência estrita às regras de negócio específicas do domínio, como políticas de reembolso e cancelamento.
+- **G-Eval de Conformidade ≥ 0,8:**  Aderência estrita às regras de negócio específicas do domínio (ex.: políticas de reembolso e cancelamento).
 
 ---
 
@@ -34,15 +34,15 @@ Para a validação quantitativa automatizada via testes unitários, definiram-se
 
 O Wanderlust Agent foi estruturado combinando componentes nativos de inteligência artificial generativa e governança em nuvem.
 
-### Modelo
-
-- **Modelo Base:** LLM de grande porte otimizado para instruções (*Instruction-Tuned*), selecionado para garantir fluidez na persona corporativa e alinhamento multilíngue.
-
-### Ferramenta de Recuperação — RAG
-
-- Integrada ao **Amazon Bedrock** sob o identificador `kb-wanderlust`.
-- Conectada à fonte de dados no Amazon S3 contendo os arquivos de instruções (`prompt_viagem.md`) e a base de dados operacional (`dataset.txt`).
-- A estratégia de fragmentação (*chunking*) foi ajustada para garantir a coesão dos blocos textuais dos roteiros.
+- **Modelo Base:** Google Gemma 3 12B IT, configurado no Amazon Bedrock AgentCore
+para garantir fluidez na persona corporativa e alinhamento nas instruções.
+- **Modelo Avaliador:** Llama 3.2 3B, executado localmente na Frente B para o cálculo das métricas de Answer Relevancy, Faithfulness e G-Eval.
+- **Ferramenta Utilizada:** Base de Conhecimento via RAG no Amazon Bedrock
+Knowledge Base (kb-wanderlust), conectada à fonte de dados no Amazon S3 contendo os
+arquivos normativos (prompt_viagem.md) e a base operacional. A estratégia de
+fragmentação (chunking) foi ajustada para preservar a coesão dos blocos textuais dos
+roteiros.
+- **Mecanismo de Memória:** Session State nativo do AgentCore para controle de histórico multi-turno por ID de sessão.
 
 ### Memória
 
