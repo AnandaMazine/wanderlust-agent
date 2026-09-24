@@ -1,7 +1,5 @@
 # Relatório Técnico Final: Desenvolvimento, Validação e Red Teaming do Wanderlust Agent
 
-**Nome:** ANANDA CRISTINE RODRIGUES MAZINE DOS SANTOS
-
 ---
 
 ## 1. Planejamento
