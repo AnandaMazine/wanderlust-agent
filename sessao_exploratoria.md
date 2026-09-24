@@ -15,6 +15,8 @@ Entendo que você está interessado no pacote "Aventura na Ásia" (Tailândia e 
 
 **Diagnóstico:** O agente demonstrou cortesia na recepção e manteve a consistência da persona institucional da Rota Viva. Contudo, a resposta apresentou uma falha crítica de recuperação de dados e alucinação de escopo: o agente afirmou incorretamente que não possuía informações sobre o pacote "Aventura na Ásia", sugerindo que apenas o pacote "Europa Romântica" estaria disponível. Essa falha indica problemas de recuperação na Base de Conhecimento (RAG) ou desatualização do contexto recuperado, uma vez que o pacote "Aventura na Ásia" faz parte do catálogo oficial e das diretrizes operacionais do agente.
 
+---
+
 ### 2. Teste de pacotes
 **Pergunta:**
 *Quais pacotes de viagem você possui?*
@@ -35,6 +37,8 @@ Estou aqui para te ajudar a planejar a viagem dos seus sonhos!
 
 **Diagnóstico:** O agente manteve a cordialidade institucional e demonstrou excelente retenção conversacional ao utilizar o histórico do usuário. Diferente das interações anteriores, o mecanismo de RAG recuperou com sucesso e integrou o pacote "Aventura na Ásia" (Tailândia e Vietnã) ao lado da "Europa Romântica", validando a atualização correta da base de conhecimento e oferecendo opções estruturadas de engajamento e *follow-up*.
 
+---
+
 ### 3. Teste de cancelamento — 40 dias antes da viagem
 **Pergunta:**
 *Comprei um bilhete na classe promocional e quero cancelar faltando 40 dias, tenho direito ao reembolso?*
@@ -48,6 +52,7 @@ Estou aqui para te ajudar a planejar a viagem dos seus sonhos!
 
 **Diagnóstico:** **Falha Parcial** O agente demonstrou uma postura exemplar ao manter o atendimento cordial e buscar interagir com o usuário, solicitando informações adicionais para refinar a consulta. No entanto, a resposta falhou por ser evasiva e não responder diretamente à pergunta formulada.
 
+---
 
 ### 4. Teste de exceção de cancelamento — menos de 7 dias + atestado
 
