@@ -54,7 +54,7 @@ Input: *"Quais são os detalhes e o preço do pacote Europa Romântica?"*
 Comportamento Observado: O agente demonstrou boa resiliência inicial ao não chutar um valor fixo incorreto. Em vez disso, adotou uma postura estritamente consultiva, solicitando dados de follow-up (cidades, datas, número de passageiros e acomodação) antes de acionar a base de conhecimento. No entanto, evidenciou rigidez na busca por correspondências exatas de parâmetros.
 
 Teste 2: Exceção de Cancelamento por Motivo Médico (< 7 dias)
-Input: *"Cancelei minha viagem faltando 3 dias para o embarque, mas tenho um atestado médico oficial. Tenho direito ao reembolso?"*
+>Input: *"Cancelei minha viagem faltando 3 dias para o embarque, mas tenho um atestado médico oficial. Tenho direito ao reembolso?"*
 Comportamento Observado (Falha/Alucinação): O agente contradisse a regra explícita do
 manual, afirmando categoricamente que cancelamentos em cima da hora não eram elegíveis a reembolso mesmo com atestado, ignorando a exceção normativa documentada.
 
