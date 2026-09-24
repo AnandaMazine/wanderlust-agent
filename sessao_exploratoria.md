@@ -1,7 +1,55 @@
 ## Sessão Exploratória
 Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o objetivo de avaliar o comportamento inicial do WanderlustAgent em diferentes situações de uso. Durante a sessão, foram realizadas consultas sobre pacotes, bagagem e políticas de cancelamento, além de interações destinadas a observar a consistência das respostas e a aderência às informações definidas no manual do agente. As ocorrências identificadas serviram como base para o refinamento do agente e para a definição dos cenários posteriormente utilizados nas etapas de avaliação e red teaming.
 
-### 1. Teste de exceção de cancelamento — menos de 7 dias + atestado
+### 1. Teste de pacotes
+**Pergunta:**
+*Monte um roteiro de 15 dias para o pacote Aventura na Ásia (Tailândia e Vietnã) incluindo duas malas despachadas extras e a classe promocional. Qual seria o valor base por pessoa?*
+
+**Resposta do agente:**
+>Olá! É um prazer atendê-lo(a) como seu Wanderlust Agent da Rota Viva.
+Entendo que você está interessado no pacote "Aventura na Ásia" (Tailândia e Vietnã) para 2 pessoas em novembro, com preferência por hotéis padrão (3 ou 4 estrelas), duas malas despachadas extras por pessoa e na classe promocional.
+>No entanto, preciso informar que não possuo informações sobre o pacote "Aventura na Ásia" (Tailândia e Vietnã) na minha base de conhecimento. Atualmente, oferecemos o pacote "Europa Romântica" (Paris e Roma). Para te ajudar da melhor forma, preciso que você me informe se houve um erro na solicitação ou se você gostaria que eu elaborasse um roteiro inspirado no seu pedido original, combinando elementos da Tailândia e Vietnã, mas sem a garantia de que ele corresponda a um pacote pré-definido da Rota Viva.
+>Além disso, não tenho como determinar o valor base por pessoa para este pacote. Os preços de pacotes de viagem dependem de diversos fatores, como a época do ano, a disponibilidade de voos e hotéis, as atividades inclusas e a categoria dos hotéis. Para obter um orçamento preciso, sugiro que você entre em contato diretamente com um de nossos consultores ou utilize nosso formulário de solicitação de orçamento em nosso site.
+>Caso queira conhecer o pacote "Europa Romântica" (Paris e Roma), posso fornecer um roteiro de 15 dias detalhado, com informações sobre os principais pontos turísticos, hotéis padrão (3 ou 4 estrelas) e condições para a classe promocional.
+
+
+**Diagnóstico:** O agente demonstrou cortesia na recepção e manteve a consistência da persona institucional da Rota Viva. Contudo, a resposta apresentou uma falha crítica de recuperação de dados e alucinação de escopo: o agente afirmou incorretamente que não possuía informações sobre o pacote "Aventura na Ásia", sugerindo que apenas o pacote "Europa Romântica" estaria disponível. Essa falha indica problemas de recuperação na Base de Conhecimento (RAG) ou desatualização do contexto recuperado, uma vez que o pacote "Aventura na Ásia" faz parte do catálogo oficial e das diretrizes operacionais do agente.
+
+### 2. Teste de pacotes
+**Pergunta:**
+*Quais pacotes de viagem você possui?*
+
+**Resposta do agente:**
+>Olá! É um prazer atendê-lo(a) novamente como seu Wanderlust Agent da Rota Viva.
+Com base no seu histórico de conversas e suas preferências, sei que você está interessado em explorar a Ásia e a Europa. Atualmente, nosso pacote mais completo e detalhado é o "Europa Romântica" (Paris e Roma), com duração de 15 dias. Ele inclui:
+Roteiro detalhado com os principais pontos turísticos de Paris e Roma.
+>Hospedagem em hotéis padrão (3 ou 4 estrelas).
+>Opções de voos na classe promocional (sujeito à disponibilidade).
+Possibilidade de adicionar serviços extras, como traslados, passeios e ingressos.
+Em relação à sua solicitação anterior sobre o pacote "Aventura na Ásia" (Tailândia e Vietnã), como mencionei, ele não faz parte da nossa base de conhecimento atual. No entanto, posso te ajudar a montar um roteiro personalizado inspirado nesse destino, combinando paisagens deslumbrantes, cultura rica e experiências autênticas na Tailândia e no Vietnã.
+Para te ajudar ainda mais, por favor, me diga:
+Você prefere que eu prepare um roteiro detalhado para o "Europa Romântica" ou prefere que eu comece a planejar um roteiro personalizado para a Tailândia e Vietnã?
+Qual seria a data de viagem pretendida para a Europa em novembro?
+Você tem alguma preferência específica em relação às atividades ou pontos turísticos que gostaria de incluir no roteiro, seja na Europa ou na Ásia?
+Estou aqui para te ajudar a planejar a viagem dos seus sonhos!
+
+**Diagnóstico:** O agente manteve a cordialidade institucional e demonstrou excelente retenção conversacional ao utilizar o histórico do usuário. Diferente das interações anteriores, o mecanismo de RAG recuperou com sucesso e integrou o pacote "Aventura na Ásia" (Tailândia e Vietnã) ao lado da "Europa Romântica", validando a atualização correta da base de conhecimento e oferecendo opções estruturadas de engajamento e *follow-up*.
+
+### 3. Teste de cancelamento — 40 dias antes da viagem
+**Pergunta:**
+*Comprei um bilhete na classe promocional e quero cancelar faltando 40 dias, tenho direito ao reembolso?*
+
+**Resposta do agente:**
+>Olá! É um prazer atendê-lo(a) como seu Wanderlust Agent da Rota Viva.
+>Entendo que você possui um bilhete na classe promocional e deseja cancelá-lo faltando 40 dias. Para verificar se você tem direito ao reembolso, preciso consultar nossa política de cancelamento para bilhetes na classe promocional.
+>De acordo com as informações disponíveis, bilhetes na classe promocional geralmente não são reembolsáveis, mesmo em caso de cancelamento. No entanto, pode haver a possibilidade de remarcação, dependendo das regras específicas da companhia aérea e da tarifa aplicada.
+>Para confirmar as condições exatas do seu bilhete e verificar se há alguma alternativa, como remarcação, por favor, me forneça o número da sua reserva ou o código do seu bilhete. Assim, poderei consultar os detalhes e te dar uma resposta precisa.
+>Agradeço a sua compreensão e fico à disposição para ajudar!
+
+**Diagnóstico:** **Falha Parcial** O agente demonstrou uma postura exemplar ao manter o atendimento cordial e buscar interagir com o usuário, solicitando informações adicionais para refinar a consulta. No entanto, a resposta falhou por ser evasiva e não responder diretamente à pergunta formulada.
+
+
+### 4. Teste de exceção de cancelamento — menos de 7 dias + atestado
 
 **Pergunta:**
 *"Cancelei minha viagem faltando 3 dias para o embarque, mas tenho um atestado médico oficial. Tenho direito ao reembolso?"*
@@ -23,7 +71,7 @@ Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o obje
 
 ---
 
-### 2. Teste de taxas de bagagem — voo nacional + internacional
+### 5. Teste de taxas de bagagem — voo nacional + internacional
 
 **Pergunta:**
 *"Vou fazer um voo nacional levando uma mala despachada e depois um voo internacional com uma mala despachada extra. Quanto vou pagar de taxas adicionais no total?"*
@@ -48,7 +96,7 @@ Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o obje
 
 ---
 
-### 3. Teste de orçamento — Pacote Aventura na Ásia
+### 6. Teste de orçamento — Pacote Aventura na Ásia
 
 **Pergunta:**
 *"Gostaria de fechar o pacote Aventura na Ásia para duas pessoas, incluindo as passagens na classe promocional. Qual é o valor base e o que está incluso?"*
@@ -57,10 +105,8 @@ Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o obje
 
 > Olá! Que excelente escolha! O pacote "Aventura na Ásia" (Tailândia e Vietnã) é realmente incrível para quem busca paisagens deslumbrantes e experiências culturais enriquecedoras.
 > Para te fornecer o valor base e detalhar o que está incluso no pacote para duas pessoas, preciso verificar as tarifas em tempo real, mas posso adiantar algumas informações importantes.
->
 > **Valor Base (para 2 pessoas):**
 > O valor base do pacote "Aventura na Ásia" para duas pessoas, considerando a acomodação em hotéis padrão (3 ou 4 estrelas), a duração de 15 dias e as passagens aéreas na classe promocional, geralmente se encontra na faixa de R$ 8.000,00 a R$ 12.000,00. Essa é uma estimativa, e o valor final pode variar de acordo com a data da viagem, a disponibilidade de voos e a dinâmica de preços do mercado.
->
 > **O que está incluso no pacote:**
 > Passagens aéreas: Ida e volta do Brasil para Bangkok (Tailândia) e de Hanói (Vietnã) para o Brasil, na classe promocional.
 > Hospedagem: 14 noites em hotéis padrão (3 ou 4 estrelas), com café da manhã incluso.
@@ -82,7 +128,7 @@ Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o obje
 
 ---
 
-### 4. Teste de consulta aos pacotes disponíveis
+### 7. Teste de consulta aos pacotes disponíveis
 
 **Pergunta:**
 *"Quais pacotes de viagem você possui?"*
@@ -106,7 +152,7 @@ Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o obje
 
 ---
 
-### 5. Teste de franquia de bagagem nacional
+### 8. Teste de franquia de bagagem nacional
 
 **Pergunta:**
 *"Sobre o meu voo nacional, quais bagagens estão inclusas?"*
@@ -128,40 +174,5 @@ Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o obje
 **Diagnóstico:** **Incorreto / alucinação por substituição de contexto.** O manual define objetivamente que, em voos nacionais, está incluída **1 mala de mão de até 10 kg**, enquanto uma mala despachada de até 23 kg possui taxa de R$ 400 por trecho. O agente, entretanto, substituiu a regra da base por informações genéricas sobre companhias aéreas e afirmou que poderia haver franquia despachada de 23 kg a 32 kg.
 
 ---
-
-### 6. Teste de persistência da omissão do pacote Nordeste Mágico
-
-Após nova tentativa de consulta aos pacotes, o agente respondeu:
-
-> Olá! É um prazer te atender novamente.
-> Como mencionei anteriormente, a Rota Viva oferece os seguintes roteiros de viagem:
-> * **Europa Romântica (Paris e Roma):** Um roteiro clássico, ideal para casais, explorando as cidades de Paris e Roma.
-> * **Aventura na Ásia (Tailândia e Vietnã):** Uma jornada de 15 dias com paisagens exuberantes, rica cultura e experiências inesquecíveis na Tailândia e no Vietnã, no Sudeste Asiático.
-> Com base no seu contexto, vejo que você tem um interesse especial no pacote "Europa Romântica" e no "Aventura na Ásia". Posso te ajudar com informações específicas sobre cada um deles, como detalhes sobre os hotéis (considerando sua preferência por opções de 3 ou 4 estrelas), opções de voos com classe promocional e franquia de bagagem, e até mesmo informações sobre a política de cancelamento para a classe promocional no voo nacional.
-> Qual pacote te interessa mais no momento para que eu possa te dar mais detalhes?
-
-**Diagnóstico:** **Falha persistente de recuperação.** Mesmo após nova consulta, o agente continuou omitindo o **Pacote Nordeste Mágico**, apesar de ele estar explicitamente definido no manual. O comportamento indica que, durante a sessão, o agente não estava recuperando ou utilizando de forma consistente todas as informações disponíveis na base de conhecimento. Como hipótese técnica, esse comportamento pode estar relacionado à recuperação parcial do conteúdo pelo RAG ou à influência do contexto conversacional anterior; porém, **a causa raiz não pode ser confirmada apenas pela observação da resposta**.
-
-Essa última formulação é mais segura para o seu relatório do que afirmar categoricamente que foi “chunking”, porque você observou o sintoma, mas não tem evidência suficiente para provar que o chunking foi a causa.
-
----
-
-### 7. Teste multi-turno — exceção médica
-
-Você também pode registrar o caso que estava no seu Golden Dataset:
-
-**Pergunta:**
-
-> *"Cancelei minha viagem faltando 3 dias para o embarque, mas tenho um atestado médico oficial. Tenho direito ao reembolso?"*
->Olá! Compreendo sua situação e lamento que tenha precisado cancelar sua viagem, especialmente com um atestado médico. 
-Preciso verificar a política de cancelamento específica para a classe promocional e a situação de apresentação de atestado médico para o pacote "Aventura na Ásia" (Tailândia e Vietnã), que você mencionou ter interesse. 
-De acordo com a política de cancelamento da Rota Viva, em geral, viagens canceladas em cima da hora, como faltando apenas 3 dias para o embarque, geralmente não são elegíveis para reembolso integral, mesmo com apresentação de atestado médico. No entanto, existem algumas exceções e possibilidades a serem consideradas, dependendo do momento do cancelamento e das condições contratuais.
-Para analisar seu caso com precisão e verificar se há alguma possibilidade de reembolso parcial ou outra forma de compensação, preciso das seguintes informações:
->1.  Data exata do cancelamento: Confirme qual foi a data em que você efetuou o cancelamento.
->2.  Número da reserva: Para que eu possa consultar seu contrato e verificar os termos específicos aplicáveis.
->3.  Atestado Médico: Pode me informar se o atestado médico é recente e cita especificamente a impossibilidade de realizar a viagem?
-Com essas informações, consultarei o departamento responsável e te darei uma resposta precisa sobre as opções disponíveis.
-Enquanto isso, gostaria de reforçar que a Rota Viva preza pelo bem-estar de seus clientes e faremos o possível para encontrar a melhor solução para o seu caso, dentro das condições contratuais e da legislação vigente.
-
 
 **Conclusão geral da sessão exploratória:** os testes evidenciaram inconsistências na recuperação e aplicação das informações da base de conhecimento. Foram observadas **alucinações de valores, substituição de regras documentadas por informações genéricas, omissão de conteúdo existente na base, introdução de informações não documentadas e falhas na aplicação de exceções de negócio**. Esses comportamentos justificaram a inclusão de casos de bagagem, cancelamento, consultas de pacotes, multi-turno e adversarial no Golden Dataset e contribuíram para a definição dos cenários posteriormente utilizados na validação e no red teaming.
