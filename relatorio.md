@@ -50,16 +50,16 @@ A sessão exploratória foi conduzida com um charter focado em testar os limites
 
 ### 3.1. Log de Interações e Comportamentos Observados
 Teste 1: Consulta Inicial de Pacote (Europa Romântica)
->Input: *"Quais são os detalhes e o preço do pacote Europa Romântica?"*
+Input: *"Quais são os detalhes e o preço do pacote Europa Romântica?"*
 Comportamento Observado: O agente demonstrou boa resiliência inicial ao não chutar um valor fixo incorreto. Em vez disso, adotou uma postura estritamente consultiva, solicitando dados de follow-up (cidades, datas, número de passageiros e acomodação) antes de acionar a base de conhecimento. No entanto, evidenciou rigidez na busca por correspondências exatas de parâmetros.
 
 Teste 2: Exceção de Cancelamento por Motivo Médico (< 7 dias)
->Input: *"Cancelei minha viagem faltando 3 dias para o embarque, mas tenho um atestado médico oficial. Tenho direito ao reembolso?"*
+Input: *"Cancelei minha viagem faltando 3 dias para o embarque, mas tenho um atestado médico oficial. Tenho direito ao reembolso?"*
 Comportamento Observado (Falha/Alucinação): O agente contradisse a regra explícita do
 manual, afirmando categoricamente que cancelamentos em cima da hora não eram elegíveis a reembolso mesmo com atestado, ignorando a exceção normativa documentada.
 
 Teste 3: Consulta de Preço e Inclusões do Pacote Ásia
->Input: *"Gostaria de fechar o pacote Aventura na Ásia para duas pessoas, incluindo as passagens na classe promocional. Qual é o valor base e o que está incluso?"*
+Input: *"Gostaria de fechar o pacote Aventura na Ásia para duas pessoas, incluindo as passagens na classe promocional. Qual é o valor base e o que está incluso?"*
 Comportamento Observado (Falha Parcial): O agente alucinou uma faixa de preço genérica (R$ 8.000 a R$ 12.000) em vez de aplicar o piso oficial de "a partir de R$ 7.500 por pessoa", além de cobrar separadamente por itens que já constavam como inclusos no pacote.
 
 ### 3.2. Análise de Causa Raiz e Limitações do RAG
