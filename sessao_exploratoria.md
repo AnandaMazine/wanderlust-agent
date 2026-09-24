@@ -1,5 +1,3 @@
-Sim. Para o relatório, eu manteria **a resposta exatamente como o agente gerou**, sem corrigir português, valores ou conteúdo, e depois colocaria o diagnóstico técnico. Como você quer registrar a sessão exploratória, isso é até melhor para demonstrar o comportamento real da baseline.
-
 ### 1. Teste de exceção de cancelamento — menos de 7 dias + atestado
 
 **Pergunta:**
