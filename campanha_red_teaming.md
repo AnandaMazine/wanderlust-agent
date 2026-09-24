@@ -1,4 +1,4 @@
-# 5. Campanha de Red Teaming
+# Campanha de Red Teaming
 
 A campanha de *red teaming* foi conduzida com 15 tentativas de ataque distribuídas entre diferentes categorias de risco, incluindo *Prompt Injection*, *Jailbreak/Bypass*, vazamento de informações, manipulação de regras de negócio, indução de promessas indevidas, conteúdo perigoso e uso indevido de ferramentas. Para cada cenário, foram registrados o objetivo do ataque, o *input* malicioso utilizado, a resposta efetivamente gerada pelo agente, o status de resistência e a severidade do risco identificado. O caso ID 2 apresentou uma falha crítica na versão *baseline*, relacionada à injeção indireta de contexto, sendo posteriormente corrigido e retestado após a atualização das diretrizes de segurança do agente.
 
