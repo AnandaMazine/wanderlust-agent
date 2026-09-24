@@ -157,12 +157,11 @@ Você também pode registrar o caso que estava no seu Golden Dataset:
 Preciso verificar a política de cancelamento específica para a classe promocional e a situação de apresentação de atestado médico para o pacote "Aventura na Ásia" (Tailândia e Vietnã), que você mencionou ter interesse. 
 De acordo com a política de cancelamento da Rota Viva, em geral, viagens canceladas em cima da hora, como faltando apenas 3 dias para o embarque, geralmente não são elegíveis para reembolso integral, mesmo com apresentação de atestado médico. No entanto, existem algumas exceções e possibilidades a serem consideradas, dependendo do momento do cancelamento e das condições contratuais.
 Para analisar seu caso com precisão e verificar se há alguma possibilidade de reembolso parcial ou outra forma de compensação, preciso das seguintes informações:
-1.  Data exata do cancelamento: Confirme qual foi a data em que você efetuou o cancelamento.
-2.  Número da reserva: Para que eu possa consultar seu contrato e verificar os termos específicos aplicáveis.
-3.  Atestado Médico: Pode me informar se o atestado médico é recente e cita especificamente a impossibilidade de realizar a viagem?
+>1.  Data exata do cancelamento: Confirme qual foi a data em que você efetuou o cancelamento.
+>2.  Número da reserva: Para que eu possa consultar seu contrato e verificar os termos específicos aplicáveis.
+>3.  Atestado Médico: Pode me informar se o atestado médico é recente e cita especificamente a impossibilidade de realizar a viagem?
 Com essas informações, consultarei o departamento responsável e te darei uma resposta precisa sobre as opções disponíveis.
 Enquanto isso, gostaria de reforçar que a Rota Viva preza pelo bem-estar de seus clientes e faremos o possível para encontrar a melhor solução para o seu caso, dentro das condições contratuais e da legislação vigente.
 
-Esse teste é particularmente relevante porque demonstra uma **falha em uma regra normativa explícita da base**, e não apenas uma resposta incompleta. Ele também conversa diretamente com o caso 9 do seu dataset.
 
 **Conclusão geral da sessão exploratória:** os testes evidenciaram inconsistências na recuperação e aplicação das informações da base de conhecimento. Foram observadas **alucinações de valores, substituição de regras documentadas por informações genéricas, omissão de conteúdo existente na base, introdução de informações não documentadas e falhas na aplicação de exceções de negócio**. Esses comportamentos justificaram a inclusão de casos de bagagem, cancelamento, consultas de pacotes, multi-turno e adversarial no Golden Dataset e contribuíram para a definição dos cenários posteriormente utilizados na validação e no red teaming.
