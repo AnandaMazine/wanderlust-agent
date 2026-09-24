@@ -1,3 +1,6 @@
+## Sessão Exploratória
+Foi realizada uma sessão exploratória de aproximadamente 90 minutos com o objetivo de avaliar o comportamento inicial do WanderlustAgent em diferentes situações de uso. Durante a sessão, foram realizadas consultas sobre pacotes, bagagem e políticas de cancelamento, além de interações destinadas a observar a consistência das respostas e a aderência às informações definidas no manual do agente. As ocorrências identificadas serviram como base para o refinamento do agente e para a definição dos cenários posteriormente utilizados nas etapas de avaliação e red teaming.
+
 ### 1. Teste de exceção de cancelamento — menos de 7 dias + atestado
 
 **Pergunta:**
