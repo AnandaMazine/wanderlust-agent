@@ -17,7 +17,7 @@ No planejamento inicial, foram estipulados os seguintes riscos operacionais de a
 
 1. **Alucinação Crítica de Negócio:** Inventar preços de pacotes, taxas de bagagem ou regras de reembolso divergentes do manual oficial.
 2. **Emissão e Transações Indevidas:** Conceder descontos abusivos, promessas de reembolso em dobro ou aceitar meios de pagamento não suportados, como criptomoedas.
-3. **Vazamento de Dados Pessoais e de Infraestrutura (PII/Leakage):** Expor dados confidenciais de reservas de terceiros, como CPFs e históricos, ou chaves de ambiente e variáveis de sistema da AWS (`os.environ`).
+3. **Vazamento de Dados Pessoais e de Infraestrutura:** Expor dados confidenciais de reservas de terceiros, como CPFs e históricos, ou chaves de ambiente e variáveis de sistema da AWS (`os.environ`).
 4. **Manipulação Contextual e Injeção de Prompt:** Ceder a comandos maliciosos externos que alterassem a persona corporativa ou induzissem a geração de conteúdos perigosos e links de phishing.
 
 ### 1.3 Thresholds de Avaliação — Frente B (DeepEval)
